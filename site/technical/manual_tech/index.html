@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Tecninal - My project</title>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet">
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../_static/font-awesome.css" rel="stylesheet"/>
+<link href="../../_static/custom.css" rel="stylesheet"/>
+<link href="../../_static/odoo.css" rel="stylesheet"/>
+<link href="../../_static/basic.css" rel="stylesheet"/>
+<script>
+    // Current page data
+    var mkdocs_page_name = "Tecninal";
+    var mkdocs_page_input_path = "technical/manual_tech.md";
+    var mkdocs_page_url = null;
+  </script>
+<script defer="" src="../../js/jquery-2.1.1.min.js"></script>
+<script defer="" src="../../js/modernizr-2.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link><link href="../../pdf/document.pdf" rel="alternate" title="PDF" type="application/pdf"/></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> My project</a>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../functional/manual_func/">Functional</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Tecninal</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#Heading8">โครงสร้างการเขียน Code สำหรับระบบอื่น</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading9">เอกสารเพิ่มเติม</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_1">ตารางโครงสร้างข้อมูลหัวข้อเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_2">ตารางโครงสร้างข้อมูลสินค้าในเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์ (printing_lines)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_3">ตารางโครงสร้างข้อมูลสินค้าในเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์ (payment_diff_lines)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_4">ตัวอย่างการส่งข้อมูล invoice ไปที่ระบบ</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_5">Python Package เพิ่มเติม</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading9_6">Github Reference</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">My project</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../..">Docs</a> »</li>
+<li>Contents: »</li>
+<li>Tecninal</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main">
+<div class="section">
+<h1 id="technical">Technical<a class="headerlink" href="#technical" title="Permanent link">#</a></h1>
+<hr/>
+<h2 id="Heading8">โครงสร้างการเขียน Code สำหรับระบบอื่น<a class="headerlink" href="#Heading8" title="Permanent link">#</a></h2>
+<p>การเรียก Service Docsign Server ระบบอื่นๆ สามารถเรียกใช้ได้ โดยถอดตัวอย่างจากระบบ PABI2 (Python2)</p>
+<ol>
+<li>การเชื่อมต่อเข้าระบบ โดยถ้าเชื่อมต่อสำเร็จ ระบบจะได้รับค่า uid กลับมา</li>
+</ol>
+<pre><code class="language-python">    import xmlrpclib
+
+    # connect with docsign
+    models = xmlrpclib.ServerProxy('{}/xmlrpc/common'.format(url))
+    uid = models.authenticate(db, username, password, {})
+</code></pre>
+<p><strong>หมายเหตุ</strong> url, db, username, password มาจากการตั้งค่าจากหัวข้อที่ 2</p>
+<ol>
+<li>หลังจากเชื่อมต่อเข้าระบบแล้ว สามารถที่จะเรียกใช้ function ที่มีอยู่ใน Docsign Server โดยจะส่งข้อมูลเอกสารไปยัง Docsign Server เพื่อทำการสร้างเอกสารและลงลายมือชื่ออิเล็กทรอนิกส์ ซึ่งค่าที่ Server จะส่งกลับมาจะอยู่ในรูปแบบ dictionalry of list ดังนี้</li>
+</ol>
+<pre><code class="language-PYTHON">    [
+        {
+            'id': 11293, 
+            'name': 'DV19000456',
+            'link_download': '&lt;url_server&gt;/web/content/&lt;id&gt;/&lt;filename&gt;?download=true', 
+            'status': 'OK', 
+            'errorMessage': False
+        }
+    ]
+</code></pre>
+<pre><code class="language-PYTHON">    # call method in server
+    models = xmlrpclib.ServerProxy('{}/xmlrpc/object'.format(url))
+</code></pre>
+<pre><code class="language-PYTHON">    res_ids = models.execute_kw(
+        db, uid, password, 'account.printing','action_call_service', [voucher_dict]
+        )
+</code></pre>
+<p>การเรียกใช้ Function ภายใน execute_kw ให้กำหนดข้อมูลดังนี้</p>
+<ul>
+<li>uid มาจากการที่ระบบ return มาจากการเชื่อมต่อระบบ</li>
+<li>'account.printing' คือ model ใน docsign server ที่ใช้ในการเก็บเอกสารทั้งหมด</li>
+<li>'action_call_service' คือ Function ที่อยู่ภายใน model account.printing ใน Server</li>
+<li>
+<p>[voucher_dict] คือ ข้อมูลที่จะส่งไปในรูปแบบ dictionary (ตัวอย่างอยู่ในเอกสารเพิ่มเติม)</p>
+</li>
+<li>
+<p>รับค่าที่ระบบส่งกลับมา และตรวจสอบจาก status
+หากเป็น OK จะมีค่า link_download ให้นำ link ที่ได้ไปเก็บไว้ในเอกสารนั้นๆ เมื่อ user ต้องการดูเอกสาร ก็จะสามารถคลิกไปที่ link นั้น ๆ เพื่อ download เอกสารมาเปิดดูได้
+ถ้า status ไม่ใช่ OK ระบบจะแสดง errorMessage และ link_download จะเป็น False สามารถนำค่าตรงส่วนนี้ไปแสดงเป็น Error ในระบบได้</p>
+</li>
+</ul>
+<h2 id="Heading9">เอกสารเพิ่มเติม<a class="headerlink" href="#Heading9" title="Permanent link">#</a></h2>
+<p>การเรียกใช้งานฟอร์ม Delivery Order / Tax Invoice จาก mySale สามารถทำได้โดยการเรียก docform เป็น delivery_order_tax_receipt (ในระบบ PABI จะไม่มีการเรียก Form นี้)</p>
+<h3 id="Heading9_1">ตารางโครงสร้างข้อมูลหัวข้อเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์<a class="headerlink" href="#Heading9_1" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th align="right">Index</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+<th align="left">Pattern</th>
+<th align="left">Type</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">doctype</td>
+<td align="left"><strong>ประเภทเอกสาร</strong><br/> <strong>รหัส ประเภท</strong><br/>  80  ใบเพิ่มหนี้<br/>  81  ใบลดหนี้<br/>  380 ใบแจ้งหนี้<br/>  388 ใบกำกับภาษี<br/>  T01 ใบรับ<br/>  T02 ใบแจ้งหนี้/ใบกำกับภาษี<br/>  T03 ใบเสร็จรับเงิน/ใบกำกับภาษี<br/>  T04 ใบส่งของ/ใบกำกับภาษี<br/>  T05 ใบกำกับภาษีอย่างย่อ<br/>  T06 ใบเสร็จรับเงิน/ใบกำกับภาษีอย่างย่อ<br/>  T07 ใบแจ้งยกเลิก</td>
+<td align="left">‘T03’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">docform</td>
+<td align="left"><strong>ประเภทฟอร์มที่ระบบรองรับ</strong><br/>- customer_tax_receipt<br/>- customer_tax_receipt200<br/>- customer_receipt<br/>- delivery_order_tax_receipt<br/>- invoice/refund</td>
+<td align="left">‘customer_tax_receipt’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">lang_form</td>
+<td align="left"><strong>ภาษาที่ต้องการออกฟอร์ม</strong><br/>- th<br/>- en</td>
+<td align="left">‘th’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">number</td>
+<td align="left">หมายเลขเอกสาร (Pre-print)</td>
+<td align="left">‘RC2563/08-0001’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">cancel_form</td>
+<td align="left">การยกเลิกเอกสาร</td>
+<td align="left">True</td>
+<td align="left">boolean</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">customer_code</td>
+<td align="left">รหัสผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">customer_name</td>
+<td align="left">ชื่อผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td align="left">seller_name</td>
+<td align="left">ชื่อผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td align="left">currency</td>
+<td align="left">ค่าเงินในการขาย</td>
+<td align="left">‘THB’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">date_document</td>
+<td align="left">วันที่ทำรายการเอกสาร (Posting Date)</td>
+<td align="left">‘YYYY-MM-DD’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">create_document</td>
+<td align="left">วันที่สร้างเอกสาร (Document Date)</td>
+<td align="left">‘YYYY-MM-DD’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td align="left">operating_unit</td>
+<td align="left">หน่วยงาน</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">purpose_code</td>
+<td align="left"><strong>รหัสสาเหตุที่ออกเอกสารใหม่</strong><br/> <strong>รหัสสาเหตุ : คำอธิบาย</strong><br/>  DBNG01 มีการเพิ่มราคาค่าสินค้า (สินค้าเกินกว่าจำนวนที่ตกลงกัน)<br/>  DBNG02 คำนวณราคาสินค้า ผิดพลาดต่ำกว่าที่เป็นจริง<br/>  DBNG99 เหตุอื่น (ระบุสาเหตุ)<br/>  DBNS01 การเพิ่มราคาค่าบริการ (บริการเกินกว่าข้อกำหนดทตกลงกัน)<br/>  DBNS02 คำนวณราคาค่าบริการ ผิดพลาดต่ำกว่าที่เป็นจริง<br/>  DBNS99 เหตุอื่น (ระบุสาเหตุ)<br/>  CDNG01 ลดราคาสินค้าที่ขาย (สินค้าผิดข้อกำหนดที่ตกลงกัน)<br/>  CDNG02 สินค้าชำรุดเสียหาย<br/>  CDNG03 สินค้าขาดจำนวนตามที่ตกลงซื้อขาย<br/>  CDNG04 คำนวณราคาสินค้าผิดพลาดสูงกว่าที่เป็นจริง<br/>  CDNG05 รับคืนสินค้า (ไม่ตรงตามคำพรรณนา)<br/>  CDNG99 เหตุอื่น (ระบุสาเหตุ)<br/>  CDNS01 ลดราคาค่าบริการ (บริการผิดข้อกำหนดที่ตกลงกัน<br/>  CDNS02 ค่าบริการขาดจำนวน<br/>  CDNS03 คำนวณราคาค่าบริการผิดพลาดสูงกว่าที่เป็นจริง<br/>  CDNS04 บอกเลิกสัญญาบริการ<br/>  CDNS99 เหตุอื่น (ระบุสาเหตุ)<br/>  TIVC01 ชื่อผิด<br/>  TIVC02 ที่อยู่ผิด<br/>  TIVC99 เหตุอื่น (ระบุสาเหตุ)<br/>  RCTC01 ชื่อผิด<br/>  RCTC02 ที่อยู่ผิด<br/>  RCTC03 รับคืนสินค้า / ยกเลิกบริการ ทั้งจำนวน (ระบุจำนวนเงิน) บาท<br/>  RCTC04 รับคืนสินค้า / ยกเลิกบริการ บางส่วนจำนวน (ระบุจำนวนเงิน) บาท<br/>  RCTC99 เหตุอื่น (ระบุสาเหตุ)</td>
+<td align="left">‘TIVC02’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td align="left">purpose_reason_other</td>
+<td align="left">กรณีเลือก purpose code เป็น เหตุผลอื่นๆ ให้ระบุข้อมูลที่ช่องนี้</td>
+<td align="left"></td>
+<td align="left">Text</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="left">notes</td>
+<td align="left">เพิ่มเติม</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td align="left">state_draft</td>
+<td align="left">การแสดงเอกสารที่เป็น Draft (ไม่มีหมายเลขเอกสาร)</td>
+<td align="left">nan</td>
+<td align="left">boolean</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td align="left">customer_street</td>
+<td align="left">ที่อยู่ 1 ผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td align="left">customer_street2</td>
+<td align="left">ที่อยู่ 2 ผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td align="left">customer_zip</td>
+<td align="left">รหัสไปรษณีย์</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="left">customer_building_number</td>
+<td align="left">บ้านเลขที่</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td align="left">customer_country_code</td>
+<td align="left">รหัสประเทศผู้ซื้อ</td>
+<td align="left">‘TH’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td align="left">customer_country</td>
+<td align="left">ประเทศผู้ซื้อ</td>
+<td align="left">‘ประเทศไทย’</td>
+<td align="left">string</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td align="left">customer_province_code</td>
+<td align="left">รหัสจังหวัดผู้ซื้อ</td>
+<td align="left">‘10‘</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td align="left">customer_state</td>
+<td align="left">จังหวัด</td>
+<td align="left">‘กรุงเทพฯ‘</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td align="left">customer_district_code</td>
+<td align="left">รหัสอำเภอผู้ซื้อ</td>
+<td align="left">‘1010’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">26</td>
+<td align="left">customer_city</td>
+<td align="left">อำเภอ/เขตผู้ซื้อ</td>
+<td align="left">‘บางรัก’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td align="left">customer_subdistrict_code</td>
+<td align="left">รหัสตำบลผู้ซื้อ</td>
+<td align="left">‘101004’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td align="left">customer_subdistrict</td>
+<td align="left">ตำบล/แขวงผู้ซื้อ</td>
+<td align="left">‘สีลม’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td align="left">customer_vat</td>
+<td align="left">เลขประจำตัวผู้เสียภาษีผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td align="left">customer_phone</td>
+<td align="left">เบอร์โทรศัพท์ผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td align="left">customer_email</td>
+<td align="left">อีเมล์ผู้ซื้อ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td align="left">customer_taxbranch_code</td>
+<td align="left">รหัสสาขาผู้ซื้อ</td>
+<td align="left">‘00000’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">33</td>
+<td align="left">customer_taxbranch_name</td>
+<td align="left">ชื่อสาขาผู้ซื้อ</td>
+<td align="left">nan</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td align="left">customer_is_company</td>
+<td align="left">ตัวกำหนดลูกค้าว่าเป็นบริษัทหรือไม่</td>
+<td align="left"></td>
+<td align="left">boolean</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td align="left">seller_street</td>
+<td align="left">ที่อยู่ 1 ผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td align="left">seller_street2</td>
+<td align="left">ที่อยู่ 2 ผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">37</td>
+<td align="left">seller_zip</td>
+<td align="left">รหัสไปรษณีย์</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td align="left">seller_building_number</td>
+<td align="left">บ้านเลขที่ผู้ขาย</td>
+<td align="left">‘111’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td align="left">seller_country_code</td>
+<td align="left">รหัสประเทศผู้ขาย</td>
+<td align="left">‘TH’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="left">seller_country</td>
+<td align="left">ประเทศผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td align="left">seller_province_code</td>
+<td align="left">รหัสจังหวัดผู้ขาย</td>
+<td align="left">‘10’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td align="left">seller_state</td>
+<td align="left">จังหวัดผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td align="left">seller_district_code</td>
+<td align="left">รหัสอำเภอผู้ขาย</td>
+<td align="left">‘1010’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td align="left">seller_city</td>
+<td align="left">อำเภอ/เขตผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td align="left">seller_subdistrict_code</td>
+<td align="left">รหัสตำบลผู้ขาย</td>
+<td align="left">‘101003’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td align="left">seller_subdistrict</td>
+<td align="left">ตำบล/แขวงผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td align="left">seller_vat</td>
+<td align="left">เลขประจำตัวผู้เสียภาษีผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td align="left">seller_phone</td>
+<td align="left">เบอร์โทรศัพท์ผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td align="left">seller_fax</td>
+<td align="left">โทรสารผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="left">seller_email</td>
+<td align="left">อีเมล์ผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td align="left">seller_taxbranch_code</td>
+<td align="left">รหัสสาขาผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td align="left">seller_taxbranch_name</td>
+<td align="left">ชื่อสาขาผู้ขาย</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td align="left">amount_untaxed</td>
+<td align="left">ราคารวมก่อนเสียภาษี</td>
+<td align="left"></td>
+<td align="left">float</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td align="left">amount_tax</td>
+<td align="left">ภาษี</td>
+<td align="left"></td>
+<td align="left">float</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td align="left">amount_total</td>
+<td align="left">ราคารวมภาษี</td>
+<td align="left"></td>
+<td align="left">float</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td align="left">origin_id</td>
+<td align="left">ชื่อเอกสารในระบบ Docsign ใช้สำหรับกรณียกเลิกเอกสาร หรืออ้างอิงเอกสารเดิม</td>
+<td align="left">'RT2564/01-0004'</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td align="left">system_origin_name</td>
+<td align="left">ชื่อระบบต้นทาง</td>
+<td align="left">‘pabi2’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">58</td>
+<td align="left">system_origin_number</td>
+<td align="left">หมายเลขเอกสารต้นทาง</td>
+<td align="left">‘RC200019200’</td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">59</td>
+<td align="left">user_sign</td>
+<td align="left">ชื่อคนทำรายการ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">60</td>
+<td align="left">validate_by</td>
+<td align="left">ชื่อคนอนุมัติให้ทำรายการ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">61</td>
+<td align="left">validate_sign</td>
+<td align="left">ชื่อคนอนุมัติให้ทำรายการ (ลายเซ็น)</td>
+<td align="left"></td>
+<td align="left">binary</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">62</td>
+<td align="left">approved_by</td>
+<td align="left">ชื่อคนมีอำนาจให้ทำรายการ</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">63</td>
+<td align="left">payment_method</td>
+<td align="left"><strong>วิธีการจ่ายเงิน</strong><br/>case<br/>credit<br/>transfer<br/>cheque<br/>rdx</td>
+<td align="left">‘cheque’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">64</td>
+<td align="left">check_no</td>
+<td align="left">หมายเลข cheque</td>
+<td align="left">‘1000033948’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">65</td>
+<td align="left">check_date</td>
+<td align="left">วันที่จ่าย cheque</td>
+<td align="left">‘2020-08-01’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">66</td>
+<td align="left">bank_name</td>
+<td align="left">ธนาคารที่ใช้จ่ายเงิน</td>
+<td align="left">‘BBL’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">67</td>
+<td align="left">bank_branch</td>
+<td align="left">สาขาของธนาคาร</td>
+<td align="left">‘สีลม ?’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">68</td>
+<td align="left">rdx_no</td>
+<td align="left">หมายเลขการใช้คูปองส่วนลด</td>
+<td align="left">‘RDF9K5J42’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Heading9_2">ตารางโครงสร้างข้อมูลสินค้าในเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์ (printing_lines)<a class="headerlink" href="#Heading9_2" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th align="right">Index</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+<th align="left">Pattern</th>
+<th align="left">Type</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">name</td>
+<td align="left">คำอธิบายสินค้า</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">quantity</td>
+<td align="left">จำนวนสินค้า</td>
+<td align="left"></td>
+<td align="left">integer</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">price_unit</td>
+<td align="left">ราคาต่อหน่วย</td>
+<td align="left"></td>
+<td align="left">float</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">price_subtotal</td>
+<td align="left">ราคารวม</td>
+<td align="left"></td>
+<td align="left">float</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">product_code</td>
+<td align="left">รหัสสินค้า</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left">R</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">product_name</td>
+<td align="left">ชื่อสินค้า</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">taxes</td>
+<td align="left">ชื่อภาษี</td>
+<td align="left"></td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td align="left">taxes_percent</td>
+<td align="left">สัดส่วนภาษี</td>
+<td align="left">7</td>
+<td align="left">float</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Heading9_3">ตารางโครงสร้างข้อมูลสินค้าในเอกสารที่ใช้สำหรับการลงมือชื่ออิเล็กทรอนิกส์ (payment_diff_lines)<a class="headerlink" href="#Heading9_3" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th align="right">Index</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+<th align="left">Pattern</th>
+<th align="left">Type</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">note</td>
+<td align="left">คำอธิบาย</td>
+<td align="left">‘ค่าธรรมเนียมแลกเปลี่ยน’</td>
+<td align="left">string</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">amount</td>
+<td align="left">ราคา</td>
+<td align="left">20.25</td>
+<td align="left">float</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>&lt;!-- :file: csv/table3.csv
+:widths: 10,20,50,20,20,10
+:header-rows: 1 --&gt;
+</code></pre>
+<h3 id="Heading9_4">ตัวอย่างการส่งข้อมูล invoice ไปที่ระบบ<a class="headerlink" href="#Heading9_4" title="Permanent link">#</a></h3>
+<pre><code class="language-PYTHON">    {
+        # header
+        'doctype': 'T03',
+        'docform': 'customer_tax_receipt',
+        'lang_form': 'th',
+        'number': 'RC2563/08-0001',
+        'cancel_form': True,
+        'customer_code': '001203',
+        'customer_name': 'นายทดสอบ ระบบ',
+        'seller_name': 'สำนักงาน',
+        'currency': 'THB',
+        'date_document': '2020-08-01',
+        'create_document': '2020-08-01',
+        'operating_unit': 'สก.',
+        'purpose_code': 'TIVC99',                              # ใช้สำหรับกรณีออกใหม่ทดแทน
+        'purpose_reason_other': 'เปลี่ยนสาขาผู้ขาย',               # ใช้สำหรับกรณีออกใหม่ทดแทน
+        'notes': '',
+        'state_draft': False,
+        # customer information
+        'customer_street': 'อาคารตึกใหญ่ 12 ซอยนราธิวาส',
+        'customer_street2': '',
+        'customer_city': '',
+        'customer_state': '',
+        'customer_country': '',
+        'customer_subdistrict': '',
+        'customer_building_number': '111',
+        'customer_zip': '10110',
+        'customer_country_code': 'TH',
+        'customer_province_code': '10',
+        'customer_district_code': '1001',
+        'customer_subdistrict_code': '100103',
+        'customer_vat': voucher.partner_id.vat,
+        'customer_phone': '0829330432',
+        'customer_email': 'test@email.com',  
+        'customer_taxbranch_code': '00000',
+        'customer_taxbranch_name': 'สำนักงานใหญ่',
+        'customer_is_company': True,
+        # seller information
+        'seller_street': 'ตึกใหม่ 22/11',
+        'seller_street2': '',
+        'seller_city': '',
+        'seller_state': '',
+        'seller_country': '',
+        'seller_subdistrict': '',
+        'seller_building_number': '111',
+        'seller_zip': '10300',
+        'seller_country_code': 'TH',
+        'seller_province_code': '10',
+        'seller_district_code': '1001',
+        'seller_subdistrict_code': '100103',
+        'seller_vat': '0092839405932',
+        'seller_phone': '089-222-1111',
+        'seller_fax': '0293940506',
+        'seller_email': 'email@email.com',
+        'seller_taxbranch_code': '00000',
+        'seller_taxbranch_name': 'สำนักงานใหญ่',
+        'amount_untaxed': 93.2,
+        'amount_tax': 3,
+        'amount_total': 96.2,
+        # origin
+        'origin_id': 'RT2564/01-0004'
+        'system_origin_name': 'pabi2',
+        'system_origin_number': 'RC200003021',
+        'user_sign': 'Admin',
+        'validate_by': 'Mr.Adam',
+        'validate_sign': '/9j/4AAQSkZJRgABAQEA...',
+        'approved_by': 'Admin',                               # TODO: Waiting new pg.
+        # payment method
+        'payment_method': voucher.receipt_type,
+        'check_no': '0011230412',
+        'check_date': '2020-08-01',
+        'bank_name': 'BBL',
+        'bank_branch': 'สีลม',
+        'rdx_no': '',                                         # TODO: Waiting RDX
+        # lines
+        'printing_lines': [(0, 0, {
+        'name': 'คำอธิบาย',
+        'quantity': 3,
+        'price_unit': 100.0,
+        'price_subtotal': 300,
+        'product_code': '10020',
+        'product_name': 'กล่องกระดาษ',
+        'taxes': 'Output Vat 7%',
+        'taxes_percent': 7,
+    })]
+        'payment_diff_lines': [(0, 0, {
+        'note': 'คำอธิบาย',
+        'amount': 3
+    })]
+    }
+</code></pre>
+<h3 id="Heading9_5">Python Package เพิ่มเติม<a class="headerlink" href="#Heading9_5" title="Permanent link">#</a></h3>
+<p>การติดตั้งโมดูล docsign_template_form จะต้องมีการติดตั้ง Package python เพิ่มเติมดังนี้</p>
+<pre><code class="language-python">    pip3 install pypng
+    pip3 install pyqrcode
+    pip3 install python-barcode
+</code></pre>
+<h3 id="Heading9_6">Github Reference<a class="headerlink" href="#Heading9_6" title="Permanent link">#</a></h3>
+<p>| ref: 'https://github.com/pabi2/pb2_addons/pull/1945'
+| ref: 'https://github.com/pabi2/pb2_addons/pull/1916'
+| ref: 'https://github.com/pabi2/pb2_addons/pull/1906'</p>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral" href="../../functional/manual_func/" title="Functional"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../functional/manual_func/" style="color: #fcfcfc;">« Previous</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+</body>
+</html>

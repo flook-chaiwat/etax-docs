@@ -1,0 +1,69 @@
+Index,Name,Description,Pattern,Type, 
+1,doctype,"**ประเภทเอกสาร**<br/>  **รหัส ประเภท**<br/>  80  ใบเพิ่มหนี้<br/>  81  ใบลดหนี้<br/>  380 ใบแจ้งหนี้<br/>  388 ใบกำกับภาษี<br/>  T01 ใบรับ<br/>  T02 ใบแจ้งหนี้/ใบกำกับภาษี<br/>  T03 ใบเสร็จรับเงิน/ใบกำกับภาษี<br/>  T04 ใบส่งของ/ใบกำกับภาษี<br/>  T05 ใบกำกับภาษีอย่างย่อ<br/>  T06 ใบเสร็จรับเงิน/ใบกำกับภาษีอย่างย่อ<br/>  T07 ใบแจ้งยกเลิก",‘T03’,string,R
+2,docform,"**ประเภทฟอร์มที่ระบบรองรับ**<br/>- customer_tax_receipt<br/>- customer_tax_receipt200<br/>- customer_receipt<br/>- delivery_order_tax_receipt<br/>- invoice/refund",‘customer_tax_receipt’,string,R
+3,lang_form,"**ภาษาที่ต้องการออกฟอร์ม**<br/>- th<br/>- en",‘th’,string,R
+4,number,หมายเลขเอกสาร (Pre-print),‘RC2563/08-0001’,string,R
+5,cancel_form,การยกเลิกเอกสาร,True,boolean, 
+6,customer_code,รหัสผู้ซื้อ, ,string,R
+7,customer_name,ชื่อผู้ซื้อ, ,string,R
+8,seller_name,ชื่อผู้ขาย, ,string,R
+9,currency,ค่าเงินในการขาย,‘THB’,string,R
+10,date_document,วันที่ทำรายการเอกสาร (Posting Date),‘YYYY-MM-DD’,string,R
+11,create_document,วันที่สร้างเอกสาร (Document Date),‘YYYY-MM-DD’,string,R
+12,operating_unit,หน่วยงาน, ,string, 
+13,purpose_code,"**รหัสสาเหตุที่ออกเอกสารใหม่**<br/>  **รหัสสาเหตุ : คำอธิบาย**<br/>  DBNG01 มีการเพิ่มราคาค่าสินค้า (สินค้าเกินกว่าจำนวนที่ตกลงกัน)<br/>  DBNG02 คำนวณราคาสินค้า ผิดพลาดต่ำกว่าที่เป็นจริง<br/>  DBNG99 เหตุอื่น (ระบุสาเหตุ)<br/>  DBNS01 การเพิ่มราคาค่าบริการ (บริการเกินกว่าข้อกำหนดทตกลงกัน)<br/>  DBNS02 คำนวณราคาค่าบริการ ผิดพลาดต่ำกว่าที่เป็นจริง<br/>  DBNS99 เหตุอื่น (ระบุสาเหตุ)<br/>  CDNG01 ลดราคาสินค้าที่ขาย (สินค้าผิดข้อกำหนดที่ตกลงกัน)<br/>  CDNG02 สินค้าชำรุดเสียหาย<br/>  CDNG03 สินค้าขาดจำนวนตามที่ตกลงซื้อขาย<br/>  CDNG04 คำนวณราคาสินค้าผิดพลาดสูงกว่าที่เป็นจริง<br/>  CDNG05 รับคืนสินค้า (ไม่ตรงตามคำพรรณนา)<br/>  CDNG99 เหตุอื่น (ระบุสาเหตุ)<br/>  CDNS01 ลดราคาค่าบริการ (บริการผิดข้อกำหนดที่ตกลงกัน<br/>  CDNS02 ค่าบริการขาดจำนวน<br/>  CDNS03 คำนวณราคาค่าบริการผิดพลาดสูงกว่าที่เป็นจริง<br/>  CDNS04 บอกเลิกสัญญาบริการ<br/>  CDNS99 เหตุอื่น (ระบุสาเหตุ)<br/>  TIVC01 ชื่อผิด<br/>  TIVC02 ที่อยู่ผิด<br/>  TIVC99 เหตุอื่น (ระบุสาเหตุ)<br/>  RCTC01 ชื่อผิด<br/>  RCTC02 ที่อยู่ผิด<br/>  RCTC03 รับคืนสินค้า / ยกเลิกบริการ ทั้งจำนวน (ระบุจำนวนเงิน) บาท<br/>  RCTC04 รับคืนสินค้า / ยกเลิกบริการ บางส่วนจำนวน (ระบุจำนวนเงิน) บาท<br/>  RCTC99 เหตุอื่น (ระบุสาเหตุ)",‘TIVC02’,string, 
+14,purpose_reason_other,กรณีเลือก purpose code เป็น เหตุผลอื่นๆ ให้ระบุข้อมูลที่ช่องนี้, ,Text,
+15,notes,เพิ่มเติม, ,string, 
+16,state_draft,การแสดงเอกสารที่เป็น Draft (ไม่มีหมายเลขเอกสาร),,boolean,
+17,customer_street,ที่อยู่ 1 ผู้ซื้อ, ,string,R
+18,customer_street2,ที่อยู่ 2 ผู้ซื้อ, ,string, 
+19,customer_zip,รหัสไปรษณีย์, ,string,R
+20,customer_building_number,บ้านเลขที่, ,string,R
+21,customer_country_code,รหัสประเทศผู้ซื้อ,‘TH’,string,R
+22,customer_country,ประเทศผู้ซื้อ,‘ประเทศไทย’,string,
+23,customer_province_code,รหัสจังหวัดผู้ซื้อ,‘10‘,string,R
+24,customer_state,จังหวัด,‘กรุงเทพฯ‘,string, 
+25,customer_district_code,รหัสอำเภอผู้ซื้อ,‘1010’,string,R
+26,customer_city,อำเภอ/เขตผู้ซื้อ,‘บางรัก’,string, 
+27,customer_subdistrict_code,รหัสตำบลผู้ซื้อ,‘101004’,string,R
+28,customer_subdistrict,ตำบล/แขวงผู้ซื้อ,‘สีลม’,string, 
+29,customer_vat,เลขประจำตัวผู้เสียภาษีผู้ซื้อ, ,string, 
+30,customer_phone,เบอร์โทรศัพท์ผู้ซื้อ, ,string, 
+31,customer_email,อีเมล์ผู้ซื้อ, ,string, 
+32,customer_taxbranch_code,รหัสสาขาผู้ซื้อ,‘00000’,string,R
+33,customer_taxbranch_name,ชื่อสาขาผู้ซื้อ,,string,R
+34,customer_is_company,ตัวกำหนดลูกค้าว่าเป็นบริษัทหรือไม่, ,boolean,
+35,seller_street,ที่อยู่ 1 ผู้ขาย, ,string,R
+36,seller_street2,ที่อยู่ 2 ผู้ขาย, ,string, 
+37,seller_zip,รหัสไปรษณีย์, ,string,R
+38,seller_building_number,บ้านเลขที่ผู้ขาย,‘111’,string,R
+39,seller_country_code,รหัสประเทศผู้ขาย,‘TH’,string,R
+40,seller_country,ประเทศผู้ขาย, ,string, 
+41,seller_province_code,รหัสจังหวัดผู้ขาย,‘10’,string,R
+42,seller_state,จังหวัดผู้ขาย, ,string, 
+43,seller_district_code,รหัสอำเภอผู้ขาย,‘1010’,string,R
+44,seller_city,อำเภอ/เขตผู้ขาย, ,string, 
+45,seller_subdistrict_code,รหัสตำบลผู้ขาย,‘101003’,string,R
+46,seller_subdistrict,ตำบล/แขวงผู้ขาย, ,string, 
+47,seller_vat,เลขประจำตัวผู้เสียภาษีผู้ขาย, ,string, 
+48,seller_phone,เบอร์โทรศัพท์ผู้ขาย, ,string, 
+49,seller_fax,โทรสารผู้ขาย, ,string, 
+50,seller_email,อีเมล์ผู้ขาย, ,string, 
+51,seller_taxbranch_code,รหัสสาขาผู้ขาย, ,string,R
+52,seller_taxbranch_name,ชื่อสาขาผู้ขาย, ,string,R
+53,amount_untaxed,ราคารวมก่อนเสียภาษี, ,float,R
+54,amount_tax,ภาษี, ,float, 
+55,amount_total,ราคารวมภาษี, ,float,R
+56,origin_id,ชื่อเอกสารในระบบ Docsign ใช้สำหรับกรณียกเลิกเอกสาร หรืออ้างอิงเอกสารเดิม,'RT2564/01-0004',string, 
+57,system_origin_name,ชื่อระบบต้นทาง,‘pabi2’,string,R
+58,system_origin_number,หมายเลขเอกสารต้นทาง,‘RC200019200’,string,R
+59,user_sign,ชื่อคนทำรายการ, ,string, 
+60,validate_by,ชื่อคนอนุมัติให้ทำรายการ, ,string, 
+61,validate_sign,ชื่อคนอนุมัติให้ทำรายการ (ลายเซ็น), ,binary, 
+62,approved_by,ชื่อคนมีอำนาจให้ทำรายการ, ,string, 
+63,payment_method,"**วิธีการจ่ายเงิน**<br/>case<br/>credit<br/>transfer<br/>cheque<br/>rdx",‘cheque’,string, 
+64,check_no,หมายเลข cheque,‘1000033948’,string, 
+65,check_date,วันที่จ่าย cheque,‘2020-08-01’,string, 
+66,bank_name,ธนาคารที่ใช้จ่ายเงิน,‘BBL’,string, 
+67,bank_branch,สาขาของธนาคาร,‘สีลม ?’,string, 
+68,rdx_no,หมายเลขการใช้คูปองส่วนลด,‘RDF9K5J42’,string, 

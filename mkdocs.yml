@@ -1,0 +1,42 @@
+site_name: My project
+theme: 
+  name: readthedocs
+  # custom_dir: 'theme'
+  features:
+    - toc.integrate
+    - navigation.expand
+  collapse_navigation: true
+  navigation_depth: 4
+
+
+nav:
+  # - Home: index.md
+  - Contents::
+    - functional/manual_func.md
+    - Tecninal: technical/manual_tech.md
+  # - Slide: slides/intro.md
+
+extra_css:
+    - _static/font-awesome.css
+    - _static/custom.css
+    - _static/odoo.css
+    - _static/basic.css
+    # - _static/theme.css
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - fontawesome_markdown
+  - attr_list
+  - pymdownx.tabbed
+  - toc:
+      permalink: "#"
+  #     baselevel: 1
+      separator: "_"
+  - tables
+
+plugins:
+  - table-reader:
+      data_path: "docs"
+  - with-pdf
+

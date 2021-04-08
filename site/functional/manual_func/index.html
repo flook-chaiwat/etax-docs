@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Functional - My project</title>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet">
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../_static/font-awesome.css" rel="stylesheet"/>
+<link href="../../_static/custom.css" rel="stylesheet"/>
+<link href="../../_static/odoo.css" rel="stylesheet"/>
+<link href="../../_static/basic.css" rel="stylesheet"/>
+<script>
+    // Current page data
+    var mkdocs_page_name = "Functional";
+    var mkdocs_page_input_path = "functional/manual_func.md";
+    var mkdocs_page_url = null;
+  </script>
+<script defer="" src="../../js/jquery-2.1.1.min.js"></script>
+<script defer="" src="../../js/modernizr-2.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link><link href="../../pdf/document.pdf" rel="alternate" title="PDF" type="application/pdf"/></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> My project</a>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Functional</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#Heading1">การออกเลข Pre-print ในระบบ</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#Heading1_1">การตั้งค่าระบบการออกหมายเลข Pre-print</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading1_2">วิธีการเรียกใช้ Pre-print ในระบบ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading2">การตั้งค่าการเชื่อมต่อในระบบ PABI2</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading3">การตั้งค่าการเชื่อมต่อ Docsign Server ไปยัง i-net</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading4">การแก้ไขการแสดงฟอนต์ผิดพลาดในรายงาน</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading5">การเปลี่ยนฟอนต์ของเอกสาร</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading6">การส่งเอกสารในระบบ PABI2 เพื่อลงลายมือชื่ออิเล็กทรอนิกส์</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Heading7">การยกเลิกเอกสารในระบบ PABI2 และลงลายมือชื่ออิเล็กทรอนิกส์</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#Heading7_1">การยกเลิกเอกสารด้วยวิธียกเลิกเอกสารใบเดิม</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading7_2">การยกเลิกเอกสารด้วยวิธีการลดหนี้ (Credit Note)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heading7_3">การยกเลิกเอกสารด้วยวิธีการออกใบใหม่ทดแทน</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../technical/manual_tech/">Tecninal</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">My project</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../..">Docs</a> »</li>
+<li>Contents: »</li>
+<li>Functional</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main">
+<div class="section">
+<h1 id="functional">Functional<a class="headerlink" href="#functional" title="Permanent link">#</a></h1>
+<hr/>
+<h2 id="Heading1">การออกเลข Pre-print ในระบบ<a class="headerlink" href="#Heading1" title="Permanent link">#</a></h2>
+<p>เมื่อทำการติดตั้งโมดูล pabi_ir_sequence_preprint ระบบ PABI2 จะสามารถสร้างหมายเลข Pre-print เมื่อเอกสารใบนั้นกำลังจะทำการบันทึกภาษี โดยที่ไม่ต้องใช้หมายเลขจากกระดาษ Pre-print ซึ่งจะมีรูปแบบหมายเลขดังนี้</p>
+<ul>
+<li>Receipt Tax Invoice : รูปแบบ RT&lt;ปีปฏิทิน&gt;/&lt;เดือนปฏิทิน&gt;-&lt;หมายเลข 4 หลัก&gt; เช่น RT2563/08-0001</li>
+<li>Invoice Tax : รูปแบบ IVT&lt;ปีปฏิทิน&gt;/&lt;เดือนปฏิทิน&gt;-&lt;หมายเลข 4 หลัก&gt; เช่น IVT2563/08-0001</li>
+</ul>
+<h3 id="Heading1_1">การตั้งค่าระบบการออกหมายเลข Pre-print<a class="headerlink" href="#Heading1_1" title="Permanent link">#</a></h3>
+<ul>
+<li>ไปที่เมนู Settings &gt; Technical &gt; Sequences &amp; Identifiers</li>
+<li>จะพบว่ามีเมนูใหม่เพิ่มขึ้นมา คือ Sequence Preprint ให้เลือกเอกสารที่ต้องการแก้ไข</li>
+</ul>
+<p><img alt="image2" class="center-image" src="../images/image2.png"/></p>
+<ul>
+<li>หมายเลข 1 คือ การแสดง &lt;หมายเลข&gt; จำนวนกี่หลัก</li>
+<li>หมายเลข 2 คือ การเพิ่มขึ้นของ &lt;หมายเลข&gt; ครั้งละเท่าไหร่</li>
+<li>หมายเลข 3 คือ การแสดง &lt;ปีปฏิทิน&gt; เป็น พุทธศักราช (พ.ศ.) หากไม่เลือกระบบจะแสดงเป็น คริสต์ศักราช (ค.ศ.)</li>
+<li>หมายเลข 4 คือ การแบ่งการสร้างหมายเลขถัดไป</li>
+<li>หมายเลข 5 คือ การสร้างหมายเลขใหม่ทุกๆเดือน หากไม่เลือกระบบจะสร้างหมายเลขใหม่ทุกๆปี</li>
+<li>หมายเลข 6 คือ ระยะเวลาในการสร้างหมายเลข เมื่อเลยช่วงระยะเวลา ระบบจะสร้างของเดือนถัดไปให้อัตโนมัติ (กรณีเลือกข้อ 5)</li>
+</ul>
+<h3 id="Heading1_2">วิธีการเรียกใช้ Pre-print ในระบบ<a class="headerlink" href="#Heading1_2" title="Permanent link">#</a></h3>
+<ul>
+<li>คล้ายกับการเรียก Sequence เดิม คือ เรียกโดยใช้ function next_by_id หรือ next_by_code ได้ โดยจะต้องเรียก module ที่ชื่อว่า ir.sequence.preprint สามารถดูตัวอย่างการเรียกใช้ Pre-print ได้ที่ ./pb2_addons/l10n_th_account_tax_detail/models/account_tax_detail.py ใน function _create_sequence_preprint</li>
+</ul>
+<h2 id="Heading2">การตั้งค่าการเชื่อมต่อในระบบ PABI2<a class="headerlink" href="#Heading2" title="Permanent link">#</a></h2>
+<p>เมื่อทำการติดตั้งโมดูล pabi_docsign_interface ให้ไปที่เมนู: Settings &gt; Configuration &gt; PABI Web. จะเห็นว่าในระบบมีการตั้งค่าเพิ่มเติมในหัวข้อ e-Tax Webservice Configuration </p>
+<p><img alt="image3" class="center-image" src="../images/image3.png"/></p>
+<ul>
+<li>
+<p>ซึ่งจะมีรายละเอียดการตั้งค่าดังนี้</p>
+<ul>
+<li>หมายเลข 1 : กรอก URL ของ Docsign Server</li>
+<li>หมายเลข 2 : กรอก URL ของ Docsign Server สำหรับทดสอบ</li>
+<li>หมายเลข 3 : กรอกชื่อ Database ของ Docsign Server</li>
+<li>หมายเลข 4 : กรอก username</li>
+<li>หมายเลข 5 : กรอก password</li>
+</ul>
+</li>
+</ul>
+<p>โดยระบบจะเช็คก่อนว่ามีการใส่ URL สำหรับทดสอบหรือไม่ ถ้ามีจะส่งไปที่ URL สำหรับทดสอบ แต่ถ้าไม่มี จะส่งไปที่ URL Docsign Server ปกติ</p>
+<h2 id="Heading3">การตั้งค่าการเชื่อมต่อ Docsign Server ไปยัง i-net<a class="headerlink" href="#Heading3" title="Permanent link">#</a></h2>
+<p>หลังจากได้รับ key จริงแล้ว ทาง สวทช. จะต้องมาแก้ไขที่ระบบ Server เพื่อให้ระบบส่งข้อมูลไปให้ i-net โดยมีขั้นตอนการตั้งค่าดังนี้</p>
+<ol>
+<li>ไปที่เมนู Settings &gt; Technical &gt; Parameters &gt; System Parameters</li>
+<li>ข้อมูลที่ขึ้นต้นด้วย webservice ทั้งหมดจะได้รับจากทาง i-net</li>
+</ol>
+<p><img alt="image4" class="center-image" src="../images/image4.png"/></p>
+<ol>
+<li>ปัจจุบันข้อมูลที่ใช้เป็น webservice ที่สำหรับทดสอบเท่านั้น เมื่อได้รับข้อมูลจาก i-net แล้วสามารถแก้ไขข้อมูลในส่วนนี้ให้ถูกต้อง</li>
+</ol>
+<h2 id="Heading4">การแก้ไขการแสดงฟอนต์ผิดพลาดในรายงาน<a class="headerlink" href="#Heading4" title="Permanent link">#</a></h2>
+<p>หากเจอกรณีที่มีการปริ้นเอกสารแล้วระบบแสดงผลผิดพลาด
+สามารถแก้ไขโดยการอัพเกรดโมดูล web </p>
+<p><img alt="image11" class="center-image" src="../images/image11.png"/></p>
+<p><img alt="image12" class="center-image" src="../images/image12.png"/></p>
+<h2 id="Heading5">การเปลี่ยนฟอนต์ของเอกสาร<a class="headerlink" href="#Heading5" title="Permanent link">#</a></h2>
+<p>สามารถเปลี่ยนฟอนต์เป็นไทยสารบัญได้โดยมีขั้นตอนการตั้งค่าดังนี้ </p>
+<ol>
+<li>ไปที่เมนู Settings &gt; Business Documents &gt; Configure Document Layout</li>
+<li>เลือกฟอนต์ THSarabunNew</li>
+</ol>
+<p><img alt="image13" class="center-image" src="../images/image13.png"/></p>
+<h2 id="Heading6">การส่งเอกสารในระบบ PABI2 เพื่อลงลายมือชื่ออิเล็กทรอนิกส์<a class="headerlink" href="#Heading6" title="Permanent link">#</a></h2>
+<p>เอกสารที่ระบบ Docsign Server รองรับมีทั้งหมด 5 ประเภท คือ</p>
+<ol>
+<li>ใบแจ้งหนี้</li>
+<li>ใบเสร็จรับเงิน / ใบกำกับภาษี</li>
+<li>ใบเสร็จรับเงิน / ใบกำกับภาษี 300% (ในระบบ PABI2 คือ 200%)</li>
+<li>ใบลดหนี้ / ใบกำกับภาษี</li>
+<li>ใบส่งของ / ใบกำกับภาษี (ส่งจาก mySale)</li>
+</ol>
+<p>วิธีการลงลายมือชื่ออิเล็กทรอนิกส์</p>
+<ol>
+<li>ไปที่เมนู Accounting &gt; Customers &gt; Customer Payments</li>
+<li>ที่หน้าเอกสารจะมี Field เพิ่มขึ้นมาชื่อว่า State Sign เพื่อบอกสถานะการลงลายมือชื่ออิเล็กทรอนิกส์ของเอกสารนั้น ๆ</li>
+<li>
+<p>Print &gt; Print Receipt</p>
+<p><img alt="image5" class="center-image" src="../images/image5.png"/></p>
+</li>
+<li>
+<p>ที่หน้า Print จะมีปุ่มเพิ่มขึ้นมา 3 ปุ่มคือ Preview, Sign และ Update Sign</p>
+<ul>
+<li>Preview คือ การสร้างเอกสารใน Docsign Server และส่งกลับมาที่ระบบต้นทาง โดยจะไม่มีการลงลายมือชื่ออิเล็กทรอนิกส์ เพื่อให้ผู้ใช้งานเห็นเอกสารก่อนที่จะลงลายมือชื่ออิเล็กทรอนิกส์</li>
+<li>Sign คือ การสร้างเอกสารใน Document Server และส่งข้อมูลทั้งหมดไปลงลายมือชื่ออิเล็กทรอนิกส์ ก่อนที่จะส่งกลับมาที่ต้นทาง</li>
+<li>Update Sign จะเห็นแทนปุ่ม Sign เมื่อเอกสารนั้นเคยลงลายมือชื่ออิเล็กทรอนิกส์ไปแล้ว ใช้สำหรับการแก้ไขข้อมูลในเอกสารนั้น</li>
+</ul>
+<p><img alt="image6" class="center-image" src="../images/image6.png"/></p>
+</li>
+<li>
+<p>เลือกฟอร์มที่ต้องการลงลายมือชื่ออิเล็กทรอนิกส์ ถ้าฟอร์มที่เลือกนั้นไม่สามารถลงลายมือชื่ออิเล็กทรอนิกส์ได้ระบบจะขึ้น Error ซึ่งเอกสารที่รองรับการลงลายมือชื่ออิเล็กทรอนิกส์ สามารถดูได้จากด้านบน</p>
+<p><img alt="image7" class="center-image" src="../images/image7.png"/></p>
+</li>
+<li>
+<p>กรณีต้องการดูตัวอย่างเอกสารก่อนลงลายมือชื่ออิเล็กทรอนิกส์จริง สามารถคลิกที่ปุ่ม Preview แล้วระบบจะสร้างเอกสารให้ที่ Attachment File</p>
+<p><img alt="image8" class="center-image" src="../images/image8.png"/></p>
+</li>
+<li>
+<p>เมื่อตรวจสอบข้อมูลถูกต้องแล้วสามารถคลิกปุ่ม Sign ได้เลย ซึ่งในระบบจะยืนยันการทำรายการอีกทีหนึ่ง </p>
+</li>
+</ol>
+<p>ถ้าระบบลงลายมือชื่ออิเล็กทรอนิกส์สำเร็จ กรณีมีเอกสารที่เคย Preview ไว้จะหายไป และมีเอกสารที่ลงลายมือชื่ออิเล็กทรอนิกส์สำเร็จมาแทนที่ หากไม่เคย Preview จะพบว่ามีเอกสารไฟล์แนบเพิ่มขึ้นมา ซึ่งจะเก็บในรูปแบบ URL Link </p>
+<p>กรณีที่มีการลงลายมือชื่ออิเล็กทรอนิกส์ผิดพลาด ระบบจะแสดงข้อความ Error ประมาณนี้</p>
+<p><img alt="image9" class="center-image" src="../images/image9.png"/></p>
+<p>สาเหตุหลัก ๆ ที่จะทำเกิด Error นั้น ส่วนใหญ่เกิดจากการที่ระบบต้นทางไม่มีข้อมูลบางส่วนที่ docsign server ต้องการ ซึ่งในที่นี้คือ ลูกค้าไม่มีข้อมูลเลขประจำตัวผู้เสียภาษี ก็ให้ไปทำการเพิ่มเลขประจำตัวผู้เสียภาษีที่ลูกค้า แล้วให้ลองอีกครั้งหนึ่ง</p>
+<p>อีกสาเหตุที่มีโอกาสเกิดคือ เอกสารที่ทำรายการไม่มี Product และ Product Code มีการเว้นช่องว่างไว้ 1 วรรค ทำให้ระบบ Error ได้</p>
+<h2 id="Heading7">การยกเลิกเอกสารในระบบ PABI2 และลงลายมือชื่ออิเล็กทรอนิกส์<a class="headerlink" href="#Heading7" title="Permanent link">#</a></h2>
+<p>การยกเลิกเอกสารลงลายมือชื่ออิเล็กทรอนิกส์ในระบบ PABI2 จะสามารถทำได้ 3 วิธีคือ</p>
+<ol>
+<li>การยกเลิกเอกสารด้วยวิธียกเลิกเอกสารใบเดิม</li>
+<li>การยกเลิกเอกสารด้วยวิธีการลดหนี้ (Credit Note)</li>
+<li>การยกเลิกเอกสารด้วยวิธีการออกใบใหม่ทดแทน</li>
+</ol>
+<h3 id="Heading7_1">การยกเลิกเอกสารด้วยวิธียกเลิกเอกสารใบเดิม<a class="headerlink" href="#Heading7_1" title="Permanent link">#</a></h3>
+<p>ในกรณีที่ต้องการยกเลิกเอกสารที่เคยลงลายมือชื่ออิเล็กทรอนิกส์ไปแล้ว สามารถยกเลิกได้ตามขั้นตอนดังนี้</p>
+<ol>
+<li>ไปที่เมนู Accounting &gt; Customers &gt; Customer Payment</li>
+<li>เลือกเอกสารที่ต้องการยกเลิก ถ้ามีการจ่ายผ่าน Bank ไปแล้วให้ยกเลิกเอกสาร RV ตามกระบวนการปกติก่อน</li>
+<li>
+<p>ไปที่เอกสารใบเสร็จที่ต้องการยกเลิก (RC) &gt; กดปุ่ม Unreconcile เพื่อทำการกลับรายการ</p>
+<p><img alt="image14" class="center-image" src="../images/image14.png"/>
+    :align: center</p>
+</li>
+<li>
+<p>Print &gt; Print Receipt &gt; เลือกประเภทเอกสารที่ต้องการยกเลิกประเภทเดียวกับที่ลงลายมือชื่ออิเล็กทรอนิกส์ไว้ก่อนหน้า</p>
+<p><img alt="image15" class="center-image" src="../images/image15.png"/></p>
+<p>.. note::
+    กรณีที่ต้องการยกเลิกเอกสารประเภท Tax Receipt และ Tax Receipt 200% จะต้องใส่เหตุผล
+    ที่ช่อง Reason for cancellation ด้วย โดยเหตุผลที่กรอกจะเป็นประเภทเดียวกับการลดหนี้ (Credit Note)</p>
+</li>
+<li>
+<p>กดปุ่ม Cancel Sign และยืนยันการยกเลิกเอกสาร ระบบจะส่งเอกสารไปทำการยกเลิกเอกสารใบนั้นให้</p>
+</li>
+</ol>
+<h3 id="Heading7_2">การยกเลิกเอกสารด้วยวิธีการลดหนี้ (Credit Note)<a class="headerlink" href="#Heading7_2" title="Permanent link">#</a></h3>
+<p>ในกรณีที่มีการทำใบลดหนี้และต้องการลงลายมือชื่ออิเล็กทรอนิกส์ มีขั้นตอนดังนี้</p>
+<ol>
+<li>ทำกระบวนการรับเงิน (Customer Payment) แล้วมีการลงลายมือชื่ออิเล็กทรอนิกส์ไปแล้ว</li>
+<li>ตรวจสอบพบจำนวนเงินไม่ถูกต้อง หรือข้อมูลผิดต้องการออกใบลดหนี้ให้ลูกค้า</li>
+<li>ไปที่เมนู Accounting &gt; Customers &gt; Customer Invoices</li>
+<li>ค้นหาเอกสารใบแจ้งหนี้ที่ต้องการออกใบลดหนี้ &gt; กดปุ่ม Refund Invoice</li>
+<li>ระบบจะออกเอกสารใบลดหนี้ (CN) &gt; แก้ไขข้อมูลให้ถูกต้อง แล้วทำตามกระบวนการลดหนี้ปกติ</li>
+<li>
+<p>Print &gt; Print Invoice &gt; กรอกสาเหตุที่ต้องการออกใบลดหนี้ &gt; กดปุ่ม Sign</p>
+<p><img alt="image16" class="center-image" src="../images/image16.png"/></p>
+<p>.. note::
+    เอกสารใบลดหนี้จะต้องมาจากการกดปุ่ม Refund Invoice เท่านั้น
+    หากเป็นการสร้างตรงจะไม่สามารถทำการลงลายมือชื่ออิเล็กทรอนิกส์ได้</p>
+</li>
+</ol>
+<h3 id="Heading7_3">การยกเลิกเอกสารด้วยวิธีการออกใบใหม่ทดแทน<a class="headerlink" href="#Heading7_3" title="Permanent link">#</a></h3>
+<p>ในกรณีที่มีการลงลายมือชื่ออิเล็กทรอนิกส์ไปแล้ว แต่ต้องการแก้ไขข้อมูลไม่มากนัก เช่น ชื่อผิด ที่อยู่ผืด</p>
+<ol>
+<li>ไปที่เอกสารที่มีข้อมูลผิดพลาด (Customer Invoice, Customer Payment)</li>
+<li>Print &gt; Print Invoice, Print Receipt</li>
+<li>กรอกสาเหตุที่ต้องการออกเอกสารใบใหม่ทดแทนใบเดิม &gt; Update Sign</li>
+</ol>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="../../technical/manual_tech/" title="Tecninal">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span style="margin-left: 15px"><a href="../../technical/manual_tech/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+</body>
+</html>
