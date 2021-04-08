@@ -1,0 +1,3 @@
+Index,Name,Description,Pattern,Type, 
+1,note,คำอธิบาย,‘ค่าธรรมเนียมแลกเปลี่ยน’,string, 
+2,amount,ราคา,20.25,float, 

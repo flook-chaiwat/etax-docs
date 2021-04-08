@@ -1,0 +1,9 @@
+Index,Name,Description,Pattern,Type, 
+1,name,คำอธิบายสินค้า, ,string,R
+2,quantity,จำนวนสินค้า, ,integer,R
+3,price_unit,ราคาต่อหน่วย, ,float,R
+4,price_subtotal,ราคารวม, ,float,R
+5,product_code,รหัสสินค้า, ,string,R
+6,product_name,ชื่อสินค้า, ,string, 
+7,taxes,ชื่อภาษี, ,string, 
+8,taxes_percent,สัดส่วนภาษี,7,float, 
