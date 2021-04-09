@@ -184,6 +184,6 @@
 ```
 
 ### Github Reference {#Heading9_6}
-| ref: 'https://github.com/pabi2/pb2_addons/pull/1945'
-| ref: 'https://github.com/pabi2/pb2_addons/pull/1916'
-| ref: 'https://github.com/pabi2/pb2_addons/pull/1906'
+- ref: 'https://github.com/pabi2/pb2_addons/pull/1945'
+- ref: 'https://github.com/pabi2/pb2_addons/pull/1916'
+- ref: 'https://github.com/pabi2/pb2_addons/pull/1906'

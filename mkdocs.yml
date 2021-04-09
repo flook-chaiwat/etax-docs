@@ -1,11 +1,14 @@
-site_name: My project
+site_name: Etax Documents
+copyright: ----
+repo_url: https://github.com/flook-chaiwat/etax-docs
+edit_uri: tree/main/docs  # Point to master branch
 theme: 
   name: readthedocs
   # custom_dir: 'theme'
   features:
     - toc.integrate
-    - navigation.expand
-  collapse_navigation: true
+    # - navigation.expand
+  collapse_navigation: false
   navigation_depth: 4
 
 
@@ -22,7 +25,8 @@ extra_css:
     - _static/odoo.css
     - _static/basic.css
     # - _static/theme.css
-
+# extra_javascript:
+#   - _static/extar.js
 markdown_extensions:
   - admonition
   - def_list
@@ -36,7 +40,15 @@ markdown_extensions:
   - tables
 
 plugins:
+  - search
   - table-reader:
       data_path: "docs"
-  - with-pdf
-
+  - with-pdf:  # More params -> https://pypi.org/project/mkdocs-with-pdf/
+        cover_title: ระบบ Etax
+        cover_subtitle: ทดสอบ
+        # cover_logo: cover.png
+        author: บริษัท อีโคซอฟต์ จำกัด
+        toc_title: สารบัญ
+        toc_level: 3
+        # two_columns_level: 3
+        ordered_chapter_level: 3
