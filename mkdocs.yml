@@ -7,6 +7,8 @@ theme:
   # custom_dir: 'theme'
   features:
     - toc.integrate
+    - search.suggest
+    - search.highlight
     # - navigation.expand
   collapse_navigation: false
   navigation_depth: 4
@@ -40,12 +42,14 @@ markdown_extensions:
   - tables
 
 plugins:
-  - search
+  - search:
+      lang:
+        - en
+        - th
   - table-reader:
       data_path: "docs"
   - with-pdf:  # More params -> https://pypi.org/project/mkdocs-with-pdf/
         cover_title: ระบบ Etax
-        cover_subtitle: ทดสอบ
         # cover_logo: cover.png
         author: บริษัท อีโคซอฟต์ จำกัด
         toc_title: สารบัญ
