@@ -46,6 +46,7 @@ plugins:
       lang:
         - en
         - th
+      # prebuild_index: true
   - table-reader:
       data_path: "docs"
   - with-pdf:  # More params -> https://pypi.org/project/mkdocs-with-pdf/
